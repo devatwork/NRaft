@@ -19,6 +19,7 @@
 		</frameworkAssemblies>
 		<dependencies>
 			<dependency id="NRaft.Core" />
+			<dependency id="NLoop.Core" />
 		</dependencies>
 	</metadata>
 </package>
