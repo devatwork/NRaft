@@ -37,11 +37,11 @@ namespace NRaft.Server
 		/// Constructs a new <see cref="ConsensusServer"/>.
 		/// </summary>
 		/// <param name="configuration">The <see cref="ServerConfiguration"/> of this <see cref="ConsensusServer"/>.</param>
-		/// <param name="scheduler">The <see cref="IResourceTrackingScheduler"/> on which to execute callbacks.</param>
 		/// <param name="log">The <see cref="ILog"/> used by this <see cref="ConsensusServer"/> to store entries in.</param>
 		/// <param name="protocol">The <see cref="IProtocol"/> using by this <see cref="ConsensusServer"/> to communicate with other <see cref="ConsensusServer"/>s in the same cluster.</param>
+		/// <param name="scheduler">The <see cref="IResourceTrackingScheduler"/> on which to execute callbacks.</param>
 		/// <exception cref="ArgumentNullException">Thrown if one of the parameters is null.</exception>
-		public ConsensusServer(ServerConfiguration configuration, IResourceTrackingScheduler scheduler, ILog log, IProtocol protocol)
+		public ConsensusServer(ServerConfiguration configuration, ILog log, IProtocol protocol, IResourceTrackingScheduler scheduler)
 		{
 			// validate arguments
 			if (configuration == null)
@@ -60,7 +60,35 @@ namespace NRaft.Server
 			this.protocol = protocol;
 
 			// create a new state
-			state = new ConsensusServerState(scheduler);
+			state = new ConsensusServerState(this);
+		}
+		/// <summary>
+		/// Gets the <see cref="ServerConfiguration"/> of this <see cref="ConsensusServer"/>.
+		/// </summary>
+		public ServerConfiguration Configuration
+		{
+			get { return configuration; }
+		}
+		/// <summary>
+		/// Gets the <see cref="ILog"/> used by this <see cref="ConsensusServer"/> to store entries in.
+		/// </summary>
+		public ILog Log
+		{
+			get { return log; }
+		}
+		/// <summary>
+		/// Gets the <see cref="IProtocol"/> using by this <see cref="ConsensusServer"/> to communicate with other <see cref="ConsensusServer"/>s in the same cluster.
+		/// </summary>
+		public IProtocol Protocol
+		{
+			get { return protocol; }
+		}
+		/// <summary>
+		/// Gets the <see cref="IResourceTrackingScheduler"/> on which callbacks can be executed.
+		/// </summary>
+		public IResourceTrackingScheduler Scheduler
+		{
+			get { return scheduler; }
 		}
 		/// <summary>
 		/// Dispose resources. Override this method in derived classes. Unmanaged resources should always be released

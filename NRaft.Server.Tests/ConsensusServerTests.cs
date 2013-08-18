@@ -16,15 +16,24 @@ namespace NRaft.Server.Tests
 		{
 			// arrange
 			var configuration = new ServerConfiguration();
-			var scheduler = new Mock<IResourceTrackingScheduler>().Object;
 			var log = new Mock<ILog>().Object;
 			var protocol = new Mock<IProtocol>().Object;
+			var scheduler = new Mock<IResourceTrackingScheduler>().Object;
 
 			// assert
-			Assert.That(() => new ConsensusServer(null, scheduler, log, protocol), Throws.InstanceOf<ArgumentNullException>());
-			Assert.That(() => new ConsensusServer(configuration, null, log, protocol), Throws.InstanceOf<ArgumentNullException>());
-			Assert.That(() => new ConsensusServer(configuration, scheduler, null, protocol), Throws.InstanceOf<ArgumentNullException>());
-			Assert.That(() => new ConsensusServer(configuration, scheduler, log, null), Throws.InstanceOf<ArgumentNullException>());
+			Assert.That(() => new ConsensusServer(null, log, protocol, scheduler), Throws.InstanceOf<ArgumentNullException>());
+			Assert.That(() => new ConsensusServer(configuration, null, protocol, scheduler), Throws.InstanceOf<ArgumentNullException>());
+			Assert.That(() => new ConsensusServer(configuration, log, null, scheduler), Throws.InstanceOf<ArgumentNullException>());
+			Assert.That(() => new ConsensusServer(configuration, log, protocol, null), Throws.InstanceOf<ArgumentNullException>());
+
+			// act
+			var server = new ConsensusServer(configuration, log, protocol, scheduler);
+
+			// assert
+			Assert.That(server.Configuration, Is.SameAs(configuration));
+			Assert.That(server.Log, Is.SameAs(log));
+			Assert.That(server.Protocol, Is.SameAs(protocol));
+			Assert.That(server.Scheduler, Is.SameAs(scheduler));
 		}
 		[Test]
 		public void DisposesLogAndProtocol()
@@ -36,7 +45,7 @@ namespace NRaft.Server.Tests
 			var log = logMock.Object;
 			var protocolMock = new Mock<IProtocol>();
 			var protocol = protocolMock.Object;
-			var server = new ConsensusServer(configuration, scheduler, log, protocol);
+			var server = new ConsensusServer(configuration, log, protocol, scheduler);
 
 			// act
 			server.Dispose();

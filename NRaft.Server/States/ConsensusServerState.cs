@@ -10,9 +10,9 @@ namespace NRaft.Server.States
 	public class ConsensusServerState : Disposable, IConsensusServerStateApi
 	{
 		/// <summary>
-		/// Holds a reference to the <see cref="IResourceTrackingScheduler"/>.
+		/// Holds a reference to the <see cref="ConsensusServer"/>.
 		/// </summary>
-		private readonly IResourceTrackingScheduler scheduler;
+		private readonly ConsensusServer server;
 		/// <summary>
 		/// Holds the current <see cref="State"/>.
 		/// </summary>
@@ -20,15 +20,15 @@ namespace NRaft.Server.States
 		/// <summary>
 		/// Creates a new <see cref="ConsensusServerState"/> for a <see cref="ConsensusServer"/>.
 		/// </summary>
-		/// <param name="scheduler">The <see cref="IResourceTrackingScheduler"/>.</param>
-		public ConsensusServerState(IResourceTrackingScheduler scheduler)
+		/// <param name="server">The <see cref="ConsensusServer"/>.</param>
+		public ConsensusServerState(ConsensusServer server)
 		{
 			// validate arguments
-			if (scheduler == null)
-				throw new ArgumentNullException("scheduler");
+			if (server == null)
+				throw new ArgumentNullException("server");
 
 			// store the argument
-			this.scheduler = scheduler;
+			this.server = server;
 
 			// always start as a follower
 			ChangeState(new Follower(this));
@@ -38,7 +38,7 @@ namespace NRaft.Server.States
 		/// </summary>
 		public IResourceTrackingScheduler Scheduler
 		{
-			get { return scheduler; }
+			get { return server.Scheduler; }
 		}
 		/// <summary>
 		/// Changes to the given <paramref name="newState"/>.
@@ -52,7 +52,7 @@ namespace NRaft.Server.States
 				throw new ArgumentNullException("newState");
 
 			// schedule the state change on the scheduler
-			scheduler.Schedule(() => {
+			server.Scheduler.Schedule(() => {
 				// if we are disposed of do not change the state
 				if (IsDisposed)
 				{
