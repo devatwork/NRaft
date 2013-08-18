@@ -17,10 +17,6 @@ namespace NRaft.Server
 		/// </summary>
 		private readonly ServerConfiguration configuration;
 		/// <summary>
-		/// Holds a reference to the <see cref="IScheduler"/> on which callbacks can be executed.
-		/// </summary>
-		private readonly IScheduler scheduler;
-		/// <summary>
 		/// Holds a reference to the <see cref="ILog"/> used by this <see cref="ConsensusServer"/> to store entries in.
 		/// </summary>
 		private readonly ILog log;
@@ -28,6 +24,10 @@ namespace NRaft.Server
 		/// Holds a reference to the <see cref="IProtocol"/> using by this <see cref="ConsensusServer"/> to communicate with other <see cref="ConsensusServer"/>s in the same cluster.
 		/// </summary>
 		private readonly IProtocol protocol;
+		/// <summary>
+		/// Holds a reference to the <see cref="IScheduler"/> on which callbacks can be executed.
+		/// </summary>
+		private readonly IScheduler scheduler;
 		/// <summary>
 		/// Constructs a new <see cref="ConsensusServer"/>.
 		/// </summary>
