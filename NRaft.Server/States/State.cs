@@ -41,5 +41,11 @@ namespace NRaft.Server.States
 		protected override void DisposeResources(bool disposeManagedResources)
 		{
 		}
+		/// <summary>
+		/// Starts this state.
+		/// </summary>
+		public virtual void Start()
+		{
+		}
 	}
 }

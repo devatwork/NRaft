@@ -34,14 +34,15 @@ namespace NRaft.Server.States
 			ChangeState(new Follower(this));
 		}
 		/// <summary>
-		/// Changes to the given <paramref name="state"/>.
+		/// Changes to the given <paramref name="newState"/>.
 		/// </summary>
-		/// <param name="state">The <see cref="State"/> to change to.</param>
-		private void ChangeState(State state)
+		/// <param name="newState">The <see cref="State"/> to change to.</param>
+		/// <exception cref="ArgumentNullException">Thrown if <paramref name="newState"/> is null.</exception>
+		private void ChangeState(State newState)
 		{
 			// validate arguments
-			if (state == null)
-				throw new ArgumentNullException("state");
+			if (newState == null)
+				throw new ArgumentNullException("newState");
 
 			// schedule the state change on the scheduler
 			scheduler.Schedule(() => {
@@ -49,7 +50,7 @@ namespace NRaft.Server.States
 				if (IsDisposed)
 				{
 					// dispose the new state
-					state.Dispose();
+					newState.Dispose();
 					return;
 				}
 
@@ -58,7 +59,10 @@ namespace NRaft.Server.States
 					currentState.Dispose();
 
 				// set the new state
-				currentState = state;
+				currentState = newState;
+
+				// start the new state
+				newState.Start();
 			});
 		}
 		/// <summary>
