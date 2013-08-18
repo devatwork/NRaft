@@ -24,3 +24,4 @@ src/Content/
 *.sublime-workspace
 *.log
 TestResult.xml
+*.DotSettings
