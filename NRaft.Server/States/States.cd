@@ -1,32 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="NRaft.Server.States.State">
-    <Position X="3.75" Y="0.5" Width="2.5" />
+    <Position X="4.5" Y="2.25" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAI=</HashCode>
       <FileName>States\State.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Server" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="NRaft.Server.States.Candidate">
-    <Position X="0.5" Y="3.25" Width="2.5" />
+    <Position X="0.5" Y="4.5" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>States\Candidate.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NRaft.Server.States.Follower">
-    <Position X="7" Y="3.25" Width="2.5" />
+    <Position X="8.25" Y="4.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>States\Follower.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NRaft.Server.States.Leader">
-    <Position X="3.75" Y="3.25" Width="2.5" />
+    <Position X="4.5" Y="4.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>States\Leader.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Interface Name="NRaft.Server.States.IConsensusServerStateApi">
+    <Position X="5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\IConsensusServerStateApi.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

@@ -8,15 +8,15 @@ namespace NRaft.Server.States
 	public abstract class State
 	{
 		/// <summary>
-		/// Holds a reference to the <see cref="ConsensusServer"/> for this state.
+		/// Holds a reference to the <see cref="IConsensusServerStateApi"/> for this state.
 		/// </summary>
-		private readonly ConsensusServer server;
+		private readonly IConsensusServerStateApi server;
 		/// <summary>
 		/// Constructs a new <see cref="State"/>.
 		/// </summary>
-		/// <param name="server">The <see cref="ConsensusServer"/> to which this <see cref="State"/> belongs</param>
+		/// <param name="server">The <see cref="IConsensusServerStateApi"/> to which this <see cref="State"/> belongs</param>
 		/// <exception cref="ArgumentNullException">Thrown if <paramref name="server"/> is null.</exception>
-		protected State(ConsensusServer server)
+		protected State(IConsensusServerStateApi server)
 		{
 			// validate arguments
 			if (server == null)
@@ -26,9 +26,9 @@ namespace NRaft.Server.States
 			this.server = server;
 		}
 		/// <summary>
-		/// Gets the <see cref="ConsensusServer"/> to which this <see cref="State"/> belongs.
+		/// Gets the <see cref="IConsensusServerStateApi"/> to which this <see cref="State"/> belongs.
 		/// </summary>
-		protected ConsensusServer Server
+		protected IConsensusServerStateApi Server
 		{
 			get { return server; }
 		}

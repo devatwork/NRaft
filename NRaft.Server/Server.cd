@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="NRaft.Server.ConsensusServer">
-    <Position X="2" Y="2.25" Width="6.5" />
+    <Position X="2.5" Y="10.25" Width="6.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAACAQgBAAAAAAAAAAAA=</HashCode>
       <FileName>ConsensusServer.cs</FileName>
@@ -14,14 +17,35 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="NRaft.Server.Configuration.ServerConfiguration">
-    <Position X="4.25" Y="0.5" Width="1.75" />
+    <Position X="7.5" Y="12.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Configuration\ServerConfiguration.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="NRaft.Server.States.Candidate">
+    <Position X="0.5" Y="6.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\Candidate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NRaft.Server.States.Follower">
+    <Position X="8.25" Y="6.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\Follower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NRaft.Server.States.Leader">
+    <Position X="4.5" Y="6.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\Leader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="NRaft.Server.States.State">
-    <Position X="4" Y="5.25" Width="2.25" />
+    <Position X="4.5" Y="4" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAI=</HashCode>
       <FileName>States\State.cs</FileName>
@@ -30,43 +54,29 @@
       <Property Name="Server" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="NRaft.Server.States.Candidate">
-    <Position X="0.5" Y="7.5" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>States\Candidate.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="NRaft.Server.States.Follower">
-    <Position X="7" Y="7.5" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>States\Follower.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="NRaft.Server.States.Leader">
-    <Position X="3.75" Y="7.5" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>States\Leader.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Interface Name="NLoop.Core.IScheduler">
-    <Position X="0.5" Y="0.5" Width="2.5" />
-    <TypeIdentifier />
-  </Interface>
   <Interface Name="NRaft.Server.Storage.ILog">
-    <Position X="1" Y="4.5" Width="1.5" />
+    <Position X="7.5" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Storage\ILog.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="NRaft.Server.Protocols.IProtocol">
-    <Position X="7" Y="0.5" Width="1.5" />
+    <Position X="4.5" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Protocols\IProtocol.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NLoop.Core.IScheduler">
+    <Position X="4" Y="8.25" Width="2.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="NRaft.Server.States.IConsensusServerStateApi">
+    <Position X="5" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\IConsensusServerStateApi.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

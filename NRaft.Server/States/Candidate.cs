@@ -11,9 +11,9 @@ namespace NRaft.Server.States
 		/// <summary>
 		/// Constructs a new <see cref="Candidate"/>.
 		/// </summary>
-		/// <param name="server">The <see cref="ConsensusServer"/> to which this <see cref="State"/> belongs</param>
+		/// <param name="server">The <see cref="IConsensusServerStateApi"/> to which this <see cref="State"/> belongs</param>
 		/// <exception cref="ArgumentNullException">Thrown if <paramref name="server"/> is null.</exception>
-		public Candidate(ConsensusServer server) : base(server)
+		public Candidate(IConsensusServerStateApi server) : base(server)
 		{
 		}
 	}
