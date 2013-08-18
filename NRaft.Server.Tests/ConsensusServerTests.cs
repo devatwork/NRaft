@@ -16,7 +16,7 @@ namespace NRaft.Server.Tests
 		{
 			// arrange
 			var configuration = new ServerConfiguration();
-			var scheduler = new Mock<IScheduler>().Object;
+			var scheduler = new Mock<IResourceTrackingScheduler>().Object;
 			var log = new Mock<ILog>().Object;
 			var protocol = new Mock<IProtocol>().Object;
 
@@ -31,7 +31,7 @@ namespace NRaft.Server.Tests
 		{
 			// arrange
 			var configuration = new ServerConfiguration();
-			var scheduler = new Mock<IScheduler>().Object;
+			var scheduler = new Mock<IResourceTrackingScheduler>().Object;
 			var logMock = new Mock<ILog>();
 			var log = logMock.Object;
 			var protocolMock = new Mock<IProtocol>();

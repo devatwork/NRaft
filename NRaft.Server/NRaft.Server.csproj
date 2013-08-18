@@ -36,8 +36,12 @@
     <DocumentationFile>bin\NRaft.Server.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NLoop.Core">
-      <HintPath>..\packages\NLoop.Core.0.1.2-alpha\lib\net45\NLoop.Core.dll</HintPath>
+    <Reference Include="NLoop.Core, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NLoop.Core.0.1.3-alpha\lib\net45\NLoop.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NLoop.Timing">
+      <HintPath>..\packages\NLoop.Timing.0.1.3-alpha\lib\net45\NLoop.Timing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

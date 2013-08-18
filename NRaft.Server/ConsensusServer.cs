@@ -26,9 +26,9 @@ namespace NRaft.Server
 		/// </summary>
 		private readonly IProtocol protocol;
 		/// <summary>
-		/// Holds a reference to the <see cref="IScheduler"/> on which callbacks can be executed.
+		/// Holds a reference to the <see cref="IResourceTrackingScheduler"/> on which callbacks can be executed.
 		/// </summary>
-		private readonly IScheduler scheduler;
+		private readonly IResourceTrackingScheduler scheduler;
 		/// <summary>
 		/// Holds a reference to the <see cref="ConsensusServerState"/>.
 		/// </summary>
@@ -37,11 +37,11 @@ namespace NRaft.Server
 		/// Constructs a new <see cref="ConsensusServer"/>.
 		/// </summary>
 		/// <param name="configuration">The <see cref="ServerConfiguration"/> of this <see cref="ConsensusServer"/>.</param>
-		/// <param name="scheduler">The <see cref="IScheduler"/> on which to execute callbacks.</param>
+		/// <param name="scheduler">The <see cref="IResourceTrackingScheduler"/> on which to execute callbacks.</param>
 		/// <param name="log">The <see cref="ILog"/> used by this <see cref="ConsensusServer"/> to store entries in.</param>
 		/// <param name="protocol">The <see cref="IProtocol"/> using by this <see cref="ConsensusServer"/> to communicate with other <see cref="ConsensusServer"/>s in the same cluster.</param>
 		/// <exception cref="ArgumentNullException">Thrown if one of the parameters is null.</exception>
-		public ConsensusServer(ServerConfiguration configuration, IScheduler scheduler, ILog log, IProtocol protocol)
+		public ConsensusServer(ServerConfiguration configuration, IResourceTrackingScheduler scheduler, ILog log, IProtocol protocol)
 		{
 			// validate arguments
 			if (configuration == null)

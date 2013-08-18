@@ -10,9 +10,9 @@ namespace NRaft.Server.States
 	public class ConsensusServerState : Disposable, IConsensusServerStateApi
 	{
 		/// <summary>
-		/// Holds a reference to the <see cref="IScheduler"/>.
+		/// Holds a reference to the <see cref="IResourceTrackingScheduler"/>.
 		/// </summary>
-		private readonly IScheduler scheduler;
+		private readonly IResourceTrackingScheduler scheduler;
 		/// <summary>
 		/// Holds the current <see cref="State"/>.
 		/// </summary>
@@ -20,8 +20,8 @@ namespace NRaft.Server.States
 		/// <summary>
 		/// Creates a new <see cref="ConsensusServerState"/> for a <see cref="ConsensusServer"/>.
 		/// </summary>
-		/// <param name="scheduler">The <see cref="IScheduler"/>.</param>
-		public ConsensusServerState(IScheduler scheduler)
+		/// <param name="scheduler">The <see cref="IResourceTrackingScheduler"/>.</param>
+		public ConsensusServerState(IResourceTrackingScheduler scheduler)
 		{
 			// validate arguments
 			if (scheduler == null)
@@ -32,6 +32,13 @@ namespace NRaft.Server.States
 
 			// always start as a follower
 			ChangeState(new Follower(this));
+		}
+		/// <summary>
+		/// Gets the <see cref="IResourceTrackingScheduler"/> on which to execute callbacks.
+		/// </summary>
+		public IResourceTrackingScheduler Scheduler
+		{
+			get { return scheduler; }
 		}
 		/// <summary>
 		/// Changes to the given <paramref name="newState"/>.
