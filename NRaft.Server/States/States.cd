@@ -31,10 +31,17 @@
       <FileName>States\Leader.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="NRaft.Server.States.IConsensusServerStateApi">
-    <Position X="5" Y="0.5" Width="2" />
+  <Class Name="NRaft.Server.States.ConsensusServerState">
+    <Position X="9.75" Y="1" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>States\ConsensusServerState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="NRaft.Server.States.IConsensusServerStateApi">
+    <Position X="5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAIAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>States\IConsensusServerStateApi.cs</FileName>
     </TypeIdentifier>
   </Interface>

@@ -3,6 +3,7 @@ using NLoop.Core;
 using NLoop.Core.Utils;
 using NRaft.Server.Configuration;
 using NRaft.Server.Protocols;
+using NRaft.Server.States;
 using NRaft.Server.Storage;
 
 namespace NRaft.Server
@@ -29,6 +30,10 @@ namespace NRaft.Server
 		/// </summary>
 		private readonly IScheduler scheduler;
 		/// <summary>
+		/// Holds a reference to the <see cref="ConsensusServerState"/>.
+		/// </summary>
+		private readonly ConsensusServerState state;
+		/// <summary>
 		/// Constructs a new <see cref="ConsensusServer"/>.
 		/// </summary>
 		/// <param name="configuration">The <see cref="ServerConfiguration"/> of this <see cref="ConsensusServer"/>.</param>
@@ -53,6 +58,9 @@ namespace NRaft.Server
 			this.scheduler = scheduler;
 			this.log = log;
 			this.protocol = protocol;
+
+			// create a new state
+			state = new ConsensusServerState(scheduler);
 		}
 		/// <summary>
 		/// Dispose resources. Override this method in derived classes. Unmanaged resources should always be released
@@ -66,6 +74,7 @@ namespace NRaft.Server
 				return;
 
 			// dispose resources
+			state.Dispose();
 			log.Dispose();
 			protocol.Dispose();
 		}

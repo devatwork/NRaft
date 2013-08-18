@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="ConsensusServerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="States\ConsensusServerStateTests.cs" />
     <Compile Include="States\StateTests.cs" />
   </ItemGroup>
   <ItemGroup>

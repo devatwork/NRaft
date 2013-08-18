@@ -1,11 +1,12 @@
 ﻿using System;
+using NRaft.Server.Utils;
 
 namespace NRaft.Server.States
 {
 	/// <summary>
 	/// Implements the state a <see cref="ConsensusServer"/> can be in.
 	/// </summary>
-	public abstract class State
+	public abstract class State : Disposable
 	{
 		/// <summary>
 		/// Holds a reference to the <see cref="IConsensusServerStateApi"/> for this state.
@@ -31,6 +32,14 @@ namespace NRaft.Server.States
 		protected IConsensusServerStateApi Server
 		{
 			get { return server; }
+		}
+		/// <summary>
+		/// Dispose resources. Override this method in derived classes. Unmanaged resources should always be released
+		/// when this method is called. Managed resources may only be disposed of if disposeManagedResources is true.
+		/// </summary>
+		/// <param name="disposeManagedResources">A value which indicates whether managed resources may be disposed of.</param>
+		protected override void DisposeResources(bool disposeManagedResources)
+		{
 		}
 	}
 }

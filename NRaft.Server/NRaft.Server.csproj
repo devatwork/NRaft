@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Configuration\ServerConfiguration.cs" />
     <Compile Include="ConsensusServer.cs" />
+    <Compile Include="States\ConsensusServerState.cs" />
     <Compile Include="States\IConsensusServerStateApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protocols\IProtocol.cs" />
