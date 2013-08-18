@@ -1,3 +1,5 @@
+using System;
+
 namespace NRaft.Server.States
 {
 	/// <summary>
@@ -6,5 +8,13 @@ namespace NRaft.Server.States
 	/// </summary>
 	public class Follower : State
 	{
+		/// <summary>
+		/// Constructs a new <see cref="Follower"/>.
+		/// </summary>
+		/// <param name="server">The <see cref="ConsensusServer"/> to which this <see cref="State"/> belongs</param>
+		/// <exception cref="ArgumentNullException">Thrown if <paramref name="server"/> is null.</exception>
+		public Follower(ConsensusServer server) : base(server)
+		{
+		}
 	}
 }
