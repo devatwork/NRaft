@@ -14,9 +14,9 @@ namespace NRaft.Server
 	public class ConsensusServer : Disposable
 	{
 		/// <summary>
-		/// Holds a reference to the <see cref="ServerConfiguration"/> of this <see cref="ConsensusServer"/>.
+		/// Holds a reference to the <see cref="IServerConfiguration"/> of this <see cref="ConsensusServer"/>.
 		/// </summary>
-		private readonly ServerConfiguration configuration;
+		private readonly IServerConfiguration configuration;
 		/// <summary>
 		/// Holds a reference to the <see cref="ILog"/> used by this <see cref="ConsensusServer"/> to store entries in.
 		/// </summary>
@@ -36,12 +36,12 @@ namespace NRaft.Server
 		/// <summary>
 		/// Constructs a new <see cref="ConsensusServer"/>.
 		/// </summary>
-		/// <param name="configuration">The <see cref="ServerConfiguration"/> of this <see cref="ConsensusServer"/>.</param>
+		/// <param name="configuration">The <see cref="IServerConfiguration"/> of this <see cref="ConsensusServer"/>.</param>
 		/// <param name="log">The <see cref="ILog"/> used by this <see cref="ConsensusServer"/> to store entries in.</param>
 		/// <param name="protocol">The <see cref="IProtocol"/> using by this <see cref="ConsensusServer"/> to communicate with other <see cref="ConsensusServer"/>s in the same cluster.</param>
 		/// <param name="scheduler">The <see cref="IResourceTrackingScheduler"/> on which to execute callbacks.</param>
 		/// <exception cref="ArgumentNullException">Thrown if one of the parameters is null.</exception>
-		public ConsensusServer(ServerConfiguration configuration, ILog log, IProtocol protocol, IResourceTrackingScheduler scheduler)
+		public ConsensusServer(IServerConfiguration configuration, ILog log, IProtocol protocol, IResourceTrackingScheduler scheduler)
 		{
 			// validate arguments
 			if (configuration == null)
@@ -63,9 +63,9 @@ namespace NRaft.Server
 			state = new ConsensusServerState(this);
 		}
 		/// <summary>
-		/// Gets the <see cref="ServerConfiguration"/> of this <see cref="ConsensusServer"/>.
+		/// Gets the <see cref="IServerConfiguration"/> of this <see cref="ConsensusServer"/>.
 		/// </summary>
-		public ServerConfiguration Configuration
+		public IServerConfiguration Configuration
 		{
 			get { return configuration; }
 		}

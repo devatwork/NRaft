@@ -38,17 +38,17 @@
   <ItemGroup>
     <Reference Include="NLoop.Core, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NLoop.Core.0.1.5-alpha\lib\net45\NLoop.Core.dll</HintPath>
+      <HintPath>..\packages\NLoop.Core.0.1.6-alpha\lib\net45\NLoop.Core.dll</HintPath>
     </Reference>
     <Reference Include="NLoop.Timing, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NLoop.Timing.0.1.5-alpha\lib\net45\NLoop.Timing.dll</HintPath>
+      <HintPath>..\packages\NLoop.Timing.0.1.6-alpha\lib\net45\NLoop.Timing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\ServerConfiguration.cs" />
+    <Compile Include="Configuration\IServerConfiguration.cs" />
     <Compile Include="ConsensusServer.cs" />
     <Compile Include="States\ConsensusServerState.cs" />
     <Compile Include="States\IConsensusServerStateApi.cs" />

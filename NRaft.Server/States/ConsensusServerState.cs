@@ -1,5 +1,6 @@
 ﻿using System;
 using NLoop.Core;
+using NRaft.Server.Configuration;
 using NRaft.Server.Utils;
 
 namespace NRaft.Server.States
@@ -41,6 +42,21 @@ namespace NRaft.Server.States
 			get { return server.Scheduler; }
 		}
 		/// <summary>
+		/// Gets the <see cref="IServerConfiguration"/> of the <see cref="ConsensusServer"/>.
+		/// </summary>
+		public IServerConfiguration Configuration
+		{
+			get { return server.Configuration; }
+		}
+		/// <summary>
+		/// Starts a new election, starts the <see cref="Candidate"/> <see cref="State"/>.
+		/// </summary>
+		public void StartElection()
+		{
+			// change to the candidate state
+			ChangeState(new Candidate(this));
+		}
+		/// <summary>
 		/// Changes to the given <paramref name="newState"/>.
 		/// </summary>
 		/// <param name="newState">The <see cref="State"/> to change to.</param>
@@ -51,26 +67,23 @@ namespace NRaft.Server.States
 			if (newState == null)
 				throw new ArgumentNullException("newState");
 
-			// schedule the state change on the scheduler
-			server.Scheduler.Schedule(() => {
-				// if we are disposed of do not change the state
-				if (IsDisposed)
-				{
-					// dispose the new state
-					newState.Dispose();
-					return;
-				}
+			// if we are disposed of do not change the state
+			if (IsDisposed)
+			{
+				// dispose the new state
+				newState.Dispose();
+				return;
+			}
 
-				// dispose the current state if there is one
-				if (currentState != null)
-					currentState.Dispose();
+			// dispose the current state if there is one
+			if (currentState != null)
+				currentState.Dispose();
 
-				// set the new state
-				currentState = newState;
+			// set the new state
+			currentState = newState;
 
-				// start the new state
-				newState.Start();
-			});
+			// start the new state
+			newState.Start();
 		}
 		/// <summary>
 		/// Dispose resources. Override this method in derived classes. Unmanaged resources should always be released

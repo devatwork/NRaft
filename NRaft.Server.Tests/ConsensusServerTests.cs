@@ -15,7 +15,7 @@ namespace NRaft.Server.Tests
 		public void Constructor()
 		{
 			// arrange
-			var configuration = new ServerConfiguration();
+			var configuration = new Mock<IServerConfiguration>().Object;
 			var log = new Mock<ILog>().Object;
 			var protocol = new Mock<IProtocol>().Object;
 			var scheduler = new Mock<IResourceTrackingScheduler>().Object;
@@ -39,8 +39,8 @@ namespace NRaft.Server.Tests
 		public void DisposesLogAndProtocol()
 		{
 			// arrange
-			var configuration = new ServerConfiguration();
-			var scheduler = new Mock<IResourceTrackingScheduler>().Object;
+			var configuration = new Mock<IServerConfiguration>().Object;
+			var scheduler = new EventLoop();
 			var logMock = new Mock<ILog>();
 			var log = logMock.Object;
 			var protocolMock = new Mock<IProtocol>();
@@ -53,6 +53,9 @@ namespace NRaft.Server.Tests
 			// assert
 			logMock.Verify(x => x.Dispose(), Times.Once());
 			protocolMock.Verify(x => x.Dispose(), Times.Once());
+
+			// cleanup
+			scheduler.Dispose();
 		}
 	}
 }
